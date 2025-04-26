@@ -1,18 +1,48 @@
 ---
-import TinaWrapper from "../components/TinaWrapper.jsx"; // ou .tsx se estiver usando TS
-
+import "../styles/global.css";
 ---
 
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <title>Text/title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A3 Media - Projetos</title>
   </head>
-  <body class="flex items-center justify-center min-h-screen bg-gray-100">
-    <div class="text-center space-y-4">
-      <h1 class="text-2xl font-bold text-gray-800">Tailwind está funcionando ✅</h1>
-      <a href="/paginatemplate1/1" class="text-blue-600 underline">Ir para Template 1</a>
-      <a href="/paginatemplate2/2" class="text-blue-600 underline">Ir para Template 2</a>
+  <body class="bg-dkgreen min-h-screen flex flex-col items-center justify-start p-8 text-gray-800 font-sans">
+    
+    <!-- Imagem da logo -->
+    <img src="/images/logoa3media.jpg" alt="Logo A3 Media" class="w-40 mb-10" />
+
+    <!-- Título principal -->
+    <h1 class="text-3xl font-bold mb-6 text-center text-white">
+      Bem-vindo aos Projetos do desafio da A3 Media
+    </h1>
+
+    <!-- Seção dos Projetos -->
+    <div class="flex flex-col gap-10 w-full max-w-3xl text-white">
+      
+      <!-- Projeto 1 -->
+      <div class="flex flex-col items-center gap-4" text-white>
+        <h2 class="text-2xl font-semibold text-white">Página Template 1</h2>
+        <p class="text-center max-w-lg text-white">
+          Template inspirado em campanhas de saúde masculina, focado em layout limpo, carregamento rápido e responsivo para mobile e desktop.
+        </p>
+        <a href="/paginatemplate1/1" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-md font-semibold transition">
+          Acessar Template 1
+        </a>
+      </div>
+
+      <!-- Projeto 2 -->
+      <div class="flex flex-col items-center gap-4">
+        <h2 class="text-2xl font-semibold">Página Template 2</h2>
+        <p class="text-center text-white max-w-lg">
+          Template voltado para educação em saúde, com integração de vídeos inteligentes e seções de referências científicas.
+        </p>
+        <a href="/paginatemplate2/1" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md font-semibold transition">
+          Acessar Template 2
+        </a>
+      </div>
+
     </div>
 
   </body>
