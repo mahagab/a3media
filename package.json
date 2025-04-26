@@ -3,7 +3,9 @@
   "type": "module",
   "scripts": {
     "dev": "tinacms dev -c \"astro dev\"",
-    "tina": "tinacms dev"
+    "tina": "tinacms dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.5",

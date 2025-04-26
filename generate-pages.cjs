@@ -1,37 +1,42 @@
-// Script para gerar 1000 arquivos Markdown automaticamente
-// Salve este arquivo como "generate-pages.js" e execute com `node generate-pages.js`
+const { writeFileSync, mkdirSync, existsSync } = require('fs');
+const { join } = require('path');
 
-const fs = require('fs');
-const path = require('path');
+const templates = [
+  { folder: 'src/pages/paginatemplate1', type: 'template1' },
+  { folder: 'src/pages/paginatemplate2', type: 'template2' },
+];
 
-const generatePages = (templateFolder, quantity) => {
-  // Cria a pasta se ela não existir
-  if (!fs.existsSync(templateFolder)) {
-    fs.mkdirSync(templateFolder, { recursive: true });
+templates.forEach(({ folder, type }) => {
+  if (!existsSync(folder)) {
+    mkdirSync(folder, { recursive: true });
   }
 
-  for (let i = 1; i <= quantity; i++) {
-    const content = `---\nnumero: \"${i}\"\n---\n\n<!-- Página ${i} gerada automaticamente -->`;
-    const filePath = path.join(templateFolder, `${i}.md`);
+  for (let i = 1; i <= 1000; i++) {
+    const path = join(folder, `${i}.md`);
+    const htmlContent = type === 'template1'
+      ? `
+  <main>
+    <h1>Try This Easy Evening Trick for Prostate Comfort</h1>
+    <p>If you’re over 45, you might have noticed some changes...</p>
+    <a href="https://fun.pulseytfun.com/preclick">Click Here to Watch The Video</a>
+  </main>
+  `
+      : `
+  <main>
+    <h1>This "Diabetic Parasite" is causing deadly glucose spikes in millions of Americans!</h1>
+    <video controls src="#"></video>
+    <p>Scientific references listed below.</p>
+  </main>
+  `;
 
-    fs.writeFileSync(filePath, content, 'utf8');
-    console.log(`✅ Criado: ${filePath}`);
+    const content = `---
+numero: ${i}
+body: |
+${htmlContent.trimEnd()}
+---`;
+
+    writeFileSync(path, content.trim());
   }
-};
+});
 
-// Gera para Template 1 e Template 2
-
-// Ajuste os caminhos conforme seu projeto
-const pathTemplate1 = path.join(__dirname, 'src', 'pages', 'paginatemplate1');
-const pathTemplate2 = path.join(__dirname, 'src', 'pages', 'paginatemplate2');
-
-// Quantidade de páginas
-const quantity = 1000;
-
-console.log('Gerando páginas Template 1...');
-generatePages(pathTemplate1, quantity);
-
-console.log('Gerando páginas Template 2...');
-generatePages(pathTemplate2, quantity);
-
-console.log('🎉 Concluído!');
+console.log('✅ Arquivos .md gerados com sucesso!');
