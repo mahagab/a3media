@@ -1,0 +1,19 @@
+---
+import TinaWrapper from "../components/TinaWrapper.jsx"; // ou .tsx se estiver usando TS
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Text/title</title>
+  </head>
+  <body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="text-center space-y-4">
+      <h1 class="text-2xl font-bold text-gray-800">Tailwind está funcionando ✅</h1>
+      <a href="/paginatemplate1/1" class="text-blue-600 underline">Ir para Template 1</a>
+      <a href="/paginatemplate2/2" class="text-blue-600 underline">Ir para Template 2</a>
+    </div>
+    <TinaWrapper client:only="react" />
+
+  </body>
+</html>

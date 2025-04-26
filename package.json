@@ -1,0 +1,23 @@
+{
+  "name": "a3media-tailwind-pronto",
+  "type": "module",
+  "scripts": {
+    "dev": "tinacms dev -c \"astro dev\"",
+    "tina": "tinacms dev"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.2.5",
+    "@tinacms/toolkit": "^1.7.13",
+    "astro": "^5.7.5",
+    "react-tinacms-editor": "^0.53.26",
+    "tinacms": "^2.7.5"
+  },
+  "devDependencies": {
+    "@tinacms/cli": "^1.9.5",
+    "@types/jquery": "^3.5.32",
+    "@types/node": "^22.15.2",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.3.0"
+  }
+}

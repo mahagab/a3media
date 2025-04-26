@@ -1,0 +1,27 @@
+# Node.js modules
+node_modules/
+
+# Build Astro
+/.astro/
+
+# Build do TinaCMS (admin)
+admin/
+
+# Public uploads (arquivos enviados pelo CMS)
+public/uploads/
+
+# Cache do Vite (usado internamente pelo Astro)
+.vite/
+
+# Logs de erro
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Arquivos do sistema (não subir coisas de Mac/Windows)
+.DS_Store
+Thumbs.db
+
+# Variáveis de ambiente (caso tenha futuro .env)
+.env
+.env.*

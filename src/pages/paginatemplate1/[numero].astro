@@ -1,0 +1,75 @@
+---
+import "../../styles/global.css";
+
+export async function getStaticPaths() {
+  return Array.from({ length: 1000 }, (_, i) => ({
+    params: { numero: (i + 1).toString() },
+  }));
+}
+
+const { numero } = Astro.params;
+---
+
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Natural Recipe – Page {{ numero }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-white font-inter text-gray-800">
+    <main class="max-w-2xl mx-auto px-6 py-10">
+      <p class="text-center text-sm text-gray-500 mb-2">Advertisement</p>
+      <h1 class="text-center text-3xl md:text-4xl font-bold font-serif mb-6">
+        Try This Easy Evening Trick for Prostate Comfort
+      </h1>
+
+      <div class="mb-6">
+        <a href="https://fun.pulseytfun.com/preclick" class="mb-6 border border-gray-300 rounded-md overflow-hidden" data-astro-cid-i7g7dgiq=""> 
+          <div class="relative aspect-video mb-6" data-astro-cid-i7g7dgiq=""> 
+            <img src="/images/presellimage.gif" alt="Video preview" class="mx-auto w-full rounded-lg" />
+          </div> 
+        </a>
+      </div>
+
+      <div class="text-center">
+        <a href="https://fun.pulseytfun.com/preclick" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-md inline-block mb-10">
+          Click Here to Watch The Video
+        </a>
+      </div>
+
+      <div class="space-y-4 leading-relaxed text-base">
+        <p>If you’re over 45, you might have noticed some changes in how you feel as you age...</p>
+        <p>This can sometimes lead to discomfort, like that frequent “need to go” feeling...</p>
+        <p>Here’s the good news! Experts have explored a simple, 21-second evening routine...</p>
+        <p>Even better? It’s something you can try at home using common, natural ingredients...</p>
+        <p>If you or someone you know is curious... click below to watch a short, free video...</p>
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="https://fun.pulseytfun.com/preclick" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-md inline-block">
+          Click Here to Watch The Video
+        </a>
+      </div>
+
+      <footer class="text-xs text-gray-500 mt-16 bg-gray-100 p-6 rounded-md">
+        <div class="space-y-3 max-w-3xl mx-auto text-left">
+          <p>Copyright 2025 by getflowempower.com. All rights reserved.</p>
+          <p>This site is not a part of the Youtube website or Youtube Inc...</p>
+          <p><strong>FDA Compliance:</strong> The information on this website has not been evaluated...</p>
+          <p><strong>Results May Vary:</strong> The weight loss results testimonials are in no way...</p>
+          <p>Some names and personal identifying information...</p>
+          <p><strong>Marketing Disclosure:</strong> This website is a market place...</p>
+          <p><strong>Advertising Disclosure:</strong> This website and the products...</p>
+        </div>
+
+        <div class="mt-6 flex flex-wrap justify-center gap-4 text-sm">
+          <a href="https://getflowempower.com/shipping" class="hover:underline">Shipping</a>
+          <a href="https://getflowempower.com/contact" class="hover:underline">Contact</a>
+          <a href="https://getflowempower.com/privacy-policy" class="hover:underline">Privacy Policy</a>
+          <a href="https://getflowempower.com/terms-of-service" class="hover:underline">Terms Of Service</a>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
