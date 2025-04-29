@@ -1,4 +1,5 @@
 ---
+import { getEntryBySlug } from "astro:content";
 import "../../styles/global.css";
 
 export async function getStaticPaths() {
@@ -9,67 +10,72 @@ export async function getStaticPaths() {
 
 const { numero } = Astro.params;
 export const prerender = true;
+
+let entry = null;
+try {
+  entry = await getEntryBySlug("paginatemplate1", numero);
+} catch (err) {
+  console.error(`Erro carregando a página ${numero}:`, err);
+}
+
+if (!entry) {
+  entry = {
+    data: {
+      title: "Página não encontrada",
+      buttonUrl: "#",
+      buttonText: "Voltar",
+      body: "<p>Conteúdo não disponível.</p>",
+    },
+  };
+}
 ---
 
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Natural Recipe – Page {numero}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{entry.data.title}</title>
+</head>
+<body class="bg-white font-inter text-gray-800">
+  <main class="max-w-2xl mx-auto px-6 py-10 space-y-8">
+    <p class="text-center text-xs text-gray-500">Advertisement</p>
 
-  <body class="bg-white font-inter text-gray-800">
-    <main class="max-w-2xl mx-auto px-6 py-10">
-      <p class="text-center text-xs text-gray-500 mb-2">Advertisement</p>
+    <h1 class="text-center text-3xl md:text-5xl font-bold leading-tight">{entry.data.title}</h1>
 
-      <h1 class="text-center text-3xl md:text-5xl font-bold leading-tight mb-6">
-        Try This Easy Evening Trick for Prostate Comfort
-      </h1>
-
-      <div class="mb-8">
-        <a href="https://fun.pulseytfun.com/preclick" class="block overflow-hidden rounded-lg border border-gray-300">
-          <div class="relative aspect-video">
-            <img src="/images/presellimage.gif" alt="Video preview" class="object-cover w-full h-full" />
-          </div>
-        </a>
-      </div>
-
-      <div class="text-center mb-10">
-        <a href="https://fun.pulseytfun.com/preclick" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-md text-base md:text-lg">
-          Click Here to Watch The Video
-        </a>
-      </div>
-
-      <div class="space-y-6 text-base leading-relaxed">
-        <p>If you’re over 45, you might have noticed some changes in how you feel as you age. For many men, the prostate naturally grows over time—starting about the size of a walnut in your 20s and potentially increasing as the years go by.</p>
-        <p>This can sometimes lead to discomfort, like that frequent “need to go” feeling or occasional tiredness, which might affect your daily life.</p>
-        <p>Here’s the good news! Experts have explored a simple, 21-second evening routine inspired by natural ingredients that you may already have on hand.</p>
-        <p>If you or someone you know is curious about gentle ways to care for prostate health, click below to watch a short, free video featuring Dr. Collins, who shares insights on this easy approach.</p>
-      </div>
-
-      <div class="text-center mt-10">
-        <a href="https://fun.pulseytfun.com/preclick" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-md text-base md:text-lg">
-          Click Here to Watch The Video
-        </a>
-      </div>
-
-      <footer class="text-xs text-gray-500 mt-16 bg-gray-100 p-6 rounded-md text-left space-y-3">
-        <p>Copyright 2025 by getflowempower.com. All rights reserved.</p>
-        <p>This site is not a part of the Youtube website or Youtube Inc. Additionally, this site is NOT endorsed by Youtube in any way. YOUTUBE is a trademark of YOUTUBE, Inc.</p>
-        <p><strong>FDA Compliance:</strong> The information on this website has not been evaluated by the Food & Drug Administration or any other medical body...</p>
-        <p><strong>Results May Vary:</strong> The weight loss results testimonials are not guaranteed and individual results may vary based on a variety of factors...</p>
-        <p>Some names and personal identifying information on this site have been changed to protect privacy.</p>
-        <p><strong>Marketing Disclosure:</strong> This website is a marketplace for various products...</p>
-        <p><strong>Advertising Disclosure:</strong> This website and the products/services referred to are advertisements.</p>
-
-        <div class="flex flex-wrap justify-center gap-4 mt-6 text-sm">
-          <a href="https://getflowempower.com/shipping" class="hover:underline">Shipping</a>
-          <a href="https://getflowempower.com/contact" class="hover:underline">Contact</a>
-          <a href="https://getflowempower.com/privacy-policy" class="hover:underline">Privacy Policy</a>
-          <a href="https://getflowempower.com/terms-of-service" class="hover:underline">Terms Of Service</a>
+    <div class="mb-8">
+      <a href={entry.data.buttonUrl} class="block overflow-hidden rounded-lg border border-gray-300">
+        <div class="relative aspect-video">
+          <img src="/images/presellimage.gif" alt="Video preview" class="object-cover w-full h-full" />
         </div>
-      </footer>
-    </main>
-  </body>
+      </a>
+    </div>
+
+    <div class="text-center">
+      <a href={entry.data.buttonUrl} class="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-md text-base md:text-lg">
+        {entry.data.buttonText}
+      </a>
+    </div>
+
+    <div class="text-base leading-relaxed mt-8 space-y-4">
+      <Fragment set:html={entry.data.body} />
+    </div>
+
+    <footer class="text-xs text-gray-500 mt-16 bg-gray-100 p-6 rounded-md space-y-3 text-left">
+      <p>Copyright 2025 by getflowempower.com. All rights reserved.</p>
+      <p>This site is not a part of the Youtube website or Youtube Inc...</p>
+      <p><strong>FDA Compliance:</strong> Informações não avaliadas pelo FDA...</p>
+      <p><strong>Results May Vary:</strong> Resultados variam entre indivíduos...</p>
+      <p>Some names and personal identifying information...</p>
+      <p><strong>Marketing Disclosure:</strong> Marketplace disclosure...</p>
+      <p><strong>Advertising Disclosure:</strong> Publicidade de produtos...</p>
+
+      <div class="flex flex-wrap justify-center gap-4 mt-6 text-sm">
+        <a href="#" class="hover:underline">Shipping</a>
+        <a href="#" class="hover:underline">Contact</a>
+        <a href="#" class="hover:underline">Privacy Policy</a>
+        <a href="#" class="hover:underline">Terms Of Service</a>
+      </div>
+    </footer>
+  </main>
+</body>
 </html>

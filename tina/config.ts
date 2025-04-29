@@ -1,5 +1,4 @@
 import { defineConfig } from "tinacms";
-
 export default defineConfig({
   branch: "main", // ou a sua branch
   clientId: "",   // deixe vazio se for Local Mode

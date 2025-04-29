@@ -1,16 +1,21 @@
-import { defineCollection, z } from "@astrojs/content-collections";
+// content/config.ts
+import { defineCollection, z } from "astro:content";
 
 const paginatemplate1 = defineCollection({
   type: "content",
   schema: z.object({
-    numero: z.string(),
+    title: z.string(),
+    buttonUrl: z.string(),
+    buttonText: z.string(),
+    body: z.string(),
   }),
 });
 
 const paginatemplate2 = defineCollection({
   type: "content",
   schema: z.object({
-    numero: z.string(),
+    title: z.string(),
+    body: z.string(),
   }),
 });
 

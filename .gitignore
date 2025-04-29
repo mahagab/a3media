@@ -13,6 +13,19 @@ public/uploads/
 # Cache do Vite (usado internamente pelo Astro)
 .vite/
 
+# Cache do Svelte (usado internamente pelo Astro)
+.svelte-kit/
+
+# Cache do Tailwind (usado internamente pelo Astro)
+.tailwind-cache/    
+
+# arquivos mdx (não subir arquivos de markdown)
+*.md
+*.mdx
+# Arquivos de configuração do editor (não subir arquivos de configuração do editor)
+.vscode/
+.idea/
+
 # Logs de erro
 npm-debug.log*
 yarn-debug.log*
